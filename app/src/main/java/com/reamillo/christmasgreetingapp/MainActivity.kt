@@ -39,7 +39,7 @@ fun GreetingApp() {
     if (!showDedication) {
         ChristmasMessage { showDedication = true }
     } else {
-        DedicationMessage()
+        DedicationMessage { showDedication = false }
     }
 }
 
@@ -73,7 +73,7 @@ fun ChristmasMessage(onNext: () -> Unit) {
 }
 
 @Composable
-fun DedicationMessage() {
+fun DedicationMessage(onBack: () -> Unit) {
     Column(modifier = Modifier.fillMaxSize().padding(16.dp)) {
         Text(
             text = "Dedication Message",
@@ -88,6 +88,9 @@ fun DedicationMessage() {
             text = "I hope you have a wonderful Christmas and a Happy New Year!",
             fontSize = 24.sp
         )
+        Button(onClick = onBack) {
+            Text("Back to Christmas Message")
+        }
     }
 }
 
